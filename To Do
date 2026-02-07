@@ -1,0 +1,22 @@
+I.Integration du template dans FlightMVC
+    Vue:
+        -transférer forms.php(C'est la page Login)   OK
+
+    Configuration:
+        -Dans route.php,Configuré le chmin URL "/" pour afficher directement "forms.php" OK
+        
+II.Login:
+    Configuration:
+         -Configurer le formulaire de login dans forms.php
+        -Dans route récupérée les valeurs des champs du formulaire de login
+
+     Base de donnnées:
+        -Créer une base de données "Template";(Postgres).
+        -Créer la table user(id,Nom) car auto-login
+
+    Fonction:
+        -Créer une fonction pour Insérer un user dans la table user
+        -Créer une fonction pour Checker si un user éxiste dans la base
+
+
+
