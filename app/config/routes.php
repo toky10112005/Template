@@ -1,6 +1,6 @@
 <?php
 
-use app\controllers\ApiExampleController;
+use app\controllers\UserController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -15,6 +15,13 @@ $router->group('', function(Router $router) use ($app) {
 
 	$router->map('/', function() use ($app) {
 		$app->render('forms');
+	});
+
+	$router->get('/LoginForm', function() use ($app){
+		$user=new UserController($app);
+		$username=$_GET['username'];
+		$result=$user->CheckUser($username);
+		$app->render('messages', ['username'=>$result['nom'],'id'=>$result['id']]);
 	});
 
 	// $router->get('/hello-world/@name', function($name) {

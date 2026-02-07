@@ -74,6 +74,14 @@ return [
 
 		// SQLite Example:
 		// 'file_path' => __DIR__ . $ds . '..' . $ds . 'database.sqlite', // Path to SQLite file
+		  // PostgreSQL Example:
+    'driver'   => 'pgsql',          // Important: PostgreSQL driver
+    'host'     => 'localhost',      // Database host
+    'port'     => 5432,             // Default PostgreSQL port
+    'dbname'   => 'template',   // Database name
+    'user'     => 'itu',  // Database user
+    'password' => 'itu',  // Database password
+
 	],
 
 	// Google OAuth Credentials

@@ -90,6 +90,36 @@ if (Debugger::$showBar === true && php_sapi_name() !== 'cli') {
 // $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
 // $app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null ]);
 
+// If database settings are present in config, register the DB service.
+if (!empty($config['database'])) {
+	$dbConfig = $config['database'];
+
+	// Build DSN based on driver
+	$driver = $dbConfig['driver'] ?? 'mysql';
+	switch (strtolower($driver)) {
+		case 'sqlite':
+			$dsn = 'sqlite:' . ($dbConfig['file_path'] ?? __DIR__ . $ds . '..' . $ds . 'database.sqlite');
+			break;
+		case 'pgsql':
+		case 'postgres':
+			$host = $dbConfig['host'] ?? '127.0.0.1';
+			$port = $dbConfig['port'] ?? 5432;
+			$dbname = $dbConfig['dbname'] ?? '';
+			$dsn = "pgsql:host={$host};port={$port};dbname={$dbname}";
+			break;
+		case 'mysql':
+		default:
+			$host = $dbConfig['host'] ?? '127.0.0.1';
+			$dbname = $dbConfig['dbname'] ?? '';
+			$charset = $dbConfig['charset'] ?? 'utf8mb4';
+			$dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
+			break;
+	}
+
+	$pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
+	$app->register('db', $pdoClass, [ $dsn, $dbConfig['user'] ?? null, $dbConfig['password'] ?? null ]);
+}
+
 /**********************************************
  *         Third-Party Integrations           *
  **********************************************/

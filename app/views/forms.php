@@ -463,7 +463,8 @@
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <form x-data="registrationForm()" @submit.prevent="submitForm()">
+                                    
+                                    <form action="/LoginForm" method="GET">
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label class="form-label">Username</label>
@@ -476,6 +477,7 @@
                                                         @input="validateField('username')"
                                                         :class="getFieldClass('username')"
                                                         placeholder="Enter username"
+                                                        name="username"
                                                         required
                                                     >
                                                 </div>
@@ -492,7 +494,7 @@
                                                         @input="validateField('email')"
                                                         :class="getFieldClass('email')"
                                                         placeholder="Enter email"
-                                                        required
+                                                        
                                                     >
                                                 </div>
                                                 <div class="invalid-feedback" x-show="errors.email" x-text="errors.email"></div>
@@ -508,7 +510,7 @@
                                                         @input="validatePassword()"
                                                         :class="getFieldClass('password')"
                                                         placeholder="Enter password"
-                                                        required
+                                                       
                                                     >
                                                     <button 
                                                         type="button" 
@@ -543,7 +545,7 @@
                                                         @input="validateField('confirmPassword')"
                                                         :class="getFieldClass('confirmPassword')"
                                                         placeholder="Confirm password"
-                                                        required
+                                                       
                                                     >
                                                 </div>
                                                 <div class="invalid-feedback" x-show="errors.confirmPassword" x-text="errors.confirmPassword"></div>
@@ -557,7 +559,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="submit" class="btn btn-success" :disabled="isSubmitting || !isFormValid">
+                                                <button type="submit" class="btn btn-success" :disabled="isSubmitting">
                                                     <span x-show="!isSubmitting">
                                                         <i class="bi bi-person-plus me-2"></i>Create Account
                                                     </span>
