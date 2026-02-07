@@ -7,16 +7,42 @@ I.Integration du template dans FlightMVC
         
 II.Login:
     Configuration:
-         -Configurer le formulaire de login dans forms.php
+        -Configurer le formulaire de login dans forms.php  En cours
         -Dans route récupérée les valeurs des champs du formulaire de login
 
-     Base de donnnées:
+    Base de donnnées:
         -Créer une base de données "Template";(Postgres).
         -Créer la table user(id,Nom) car auto-login
 
     Fonction:
         -Créer une fonction pour Insérer un user dans la table user
         -Créer une fonction pour Checker si un user éxiste dans la base
+
+
+Prendre message.html dans template et l'integrée dans FlightMVC
+
+Configurér Route avec l'URL "/Message" pour rediriger vers message.php ..Aorès le login on redirige 
+    l'user vers message.php
+
+III.Messagerie:
+    Vue:
+        -Intégrer message.html en message.php
+        (Utiliser les fonctionnalité du template)
+        -
+
+    Base de données;
+        -Créer la table "Conversation" (id, user_id, id_destinataire, timestamp)
+        -Créer la table "Message" (id,contenue,id_conversation, timestamp)
+
+    Fonction:
+        -Créer un fonction pour insere une Conversation dans la table Conversation:
+            (Garder en tête que losque un même paire est sur le point d'être enregistrer 
+            on ne change que le timestamp)
+
+        -Créer une fonction pour insérer un message dans la table Message
+        -Créer une fonction pour récuperer les messages d'une conversation
+        -Créer une fonction pour récuperer les conversations d'un user
+         
 
 
 
